@@ -2,6 +2,8 @@
 
 namespace Saq\RabbitMqQueueBundle;
 
+use Saq\RabbitMqQueueBundle\DependencyInjection\RabbitMqQueueExtension;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -17,6 +19,7 @@ class RabbitMqQueueBundle extends Bundle
 {
 	private static $oContainer;
 
+
 	public function setContainer(ContainerInterface $container = null)
 	{
 		parent::setContainer($container);
@@ -30,5 +33,14 @@ class RabbitMqQueueBundle extends Bundle
 	{
 		return self::$oContainer;
 	}
+
+	public function getContainerExtension()
+	{
+		if (null === $this->extension) {
+			$this->extension = new RabbitMqQueueExtension();
+		}
+		return $this->extension;
+	}
+
 
 }

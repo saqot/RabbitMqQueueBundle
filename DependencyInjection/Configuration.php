@@ -23,6 +23,9 @@ class Configuration implements ConfigurationInterface
 	 */
 	protected $name;
 
+	protected $configDefault;
+
+
 	/**
 	 * Configuration constructor.
 	 * @param   string $name
@@ -34,52 +37,25 @@ class Configuration implements ConfigurationInterface
 
 	public function getConfigTreeBuilder()
 	{
-		$tree = new TreeBuilder();
-		$rootNode = $tree->root($this->name);
-
-		$rootNode
+		$builder = new TreeBuilder();
+		$root = $builder->root($this->name);
+		$root
 			->children()
-			->booleanNode('debug')->defaultValue('%kernel.debug%')->end()
-			->scalarNode('foo')->cannotBeEmpty()->end()
-			->end();
+				->arrayNode('connection')
+					->children()
+						->scalarNode('host')->defaultValue('localhost')->end()
+						->scalarNode('port')->defaultValue(5672)->end()
+						->scalarNode('user')->defaultValue('guest')->end()
+						->scalarNode('password')->defaultValue('guest')->end()
+					->end()
+				->end()
+				->scalarNode('url')->defaultValue('urlurlurlurlurl')->end()
+				->scalarNode('url2')->end()
 
-		//$this->addConnections($rootNode);
-		//AppSaq::dumpExit($tree);
-		return $tree;
+			->end()
+		;
+
+
+		return $builder;
 	}
-
-//	protected function addConnections(ArrayNodeDefinition $node)
-//	{
-//		$node
-//			->fixXmlConfig('connection')
-//			->children()
-//				->arrayNode('connections')
-//					->useAttributeAsKey('key')
-//					->canBeUnset()
-//					->prototype('array')
-//						->children()
-//							->scalarNode('url')->defaultValue('')->end()
-//							->scalarNode('host')->defaultValue('localhost')->end()
-//							->scalarNode('port')->defaultValue(5672)->end()
-//							->scalarNode('user')->defaultValue('guest')->end()
-//							->scalarNode('password')->defaultValue('guest')->end()
-//							->scalarNode('vhost')->defaultValue('/')->end()
-//							->booleanNode('lazy')->defaultFalse()->end()
-//							->scalarNode('connection_timeout')->defaultValue(3)->end()
-//							->scalarNode('read_write_timeout')->defaultValue(3)->end()
-//							->booleanNode('use_socket')->defaultValue(false)->end()
-//							->arrayNode('ssl_context')
-//								->useAttributeAsKey('key')
-//								->canBeUnset()
-//								->prototype('variable')->end()
-//							->end()
-//							->booleanNode('keepalive')->defaultFalse()->info('requires php-amqplib v2.4.1+ and PHP5.4+')->end()
-//							->scalarNode('heartbeat')->defaultValue(0)->info('requires php-amqplib v2.4.1+')->end()
-//							->scalarNode('connection_parameters_provider')->end()
-//							->end()
-//						->end()
-//					->end()
-//				->end()
-//		;
-//	}
 }
