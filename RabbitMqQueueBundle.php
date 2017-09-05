@@ -1,19 +1,19 @@
 <?php
 
-namespace Saq\StaticHelperBundle;
+namespace Saq\RabbitMqQueueBundle;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-
 /**
- * class: SaqStaticHelperBundle
+ * class:  RabbitMqQueueBundle
  * -----------------------------------------------------
- * @date 19.07.2017
- * @author Saqot (Mihail Shirnin) <saqott@gmail.com>
- * @package Saq\StaticHelperBundle
+ * @author  Saqot (Mihail Shirnin) <saqott@gmail.com>
+ * @package  Saq\RabbitMqQueueBundle
+ * -----------------------------------------------------
+ * 05.09.2017
  */
-class SaqStaticHelperBundle extends Bundle
+class RabbitMqQueueBundle extends Bundle
 {
 	private static $oContainer;
 
@@ -30,6 +30,5 @@ class SaqStaticHelperBundle extends Bundle
 	{
 		return self::$oContainer;
 	}
-
 
 }
