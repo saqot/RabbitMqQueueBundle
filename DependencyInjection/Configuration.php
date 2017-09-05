@@ -36,7 +36,7 @@ class Configuration implements ConfigurationInterface
 		$rootNode
 			->children()
 			->booleanNode('debug')->defaultValue('%kernel.debug%')->end()
-			->booleanNode('foo')->defaultValue(false)->end()
+			->booleanNode('foo')->cannotBeEmpty()->end()
 			->end();
 
 		return $tree;
