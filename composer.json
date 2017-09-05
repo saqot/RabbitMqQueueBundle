@@ -1,0 +1,26 @@
+{
+    "name": "saq/rabbitmq-queue-bundle",
+    "description": "queue manager for Symfony 3",
+    "version" : "1.0.1",
+    "type" : "symfony-bundle",
+    "homepage": "https://github.com/saqot/RabbitMqQueueBundle",
+    "license": "MIT",
+    "keywords" : ["symfony", "symfony bundle", "rabbitmq", "queue"],
+    "authors" : [{
+        "name" : "Mihail Shirnin / Saqot",
+        "email" : "saqott@gmail.com"
+    }],
+    "require" : {
+        "php": ">=7.0",
+        "symfony/symfony": ">=3.2"
+    },
+    "autoload" : {
+        "psr-4" : { "Saq\\RabbitMqQueueBundle\\" : "" }
+    },
+    "minimum-stability": "dev",
+    "extra" : {
+        "branch-alias" : {
+            "dev-master" : "1.0.x-dev"
+        }
+    }
+}
