@@ -2,6 +2,8 @@
 
 namespace Saq\RabbitMqQueueBundle\DependencyInjection;
 
+use AppBundle\Helper\App;
+use Saq\StaticHelperBundle\Helper\AppSaq;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -34,14 +36,15 @@ class Configuration implements ConfigurationInterface
 	{
 		$tree = new TreeBuilder();
 		$rootNode = $tree->root($this->name);
+
 		$rootNode
 			->children()
 			->booleanNode('debug')->defaultValue('%kernel.debug%')->end()
-			->booleanNode('foo')->cannotBeEmpty()->end()
+			->scalarNode('foo')->cannotBeEmpty()->end()
 			->end();
 
 		//$this->addConnections($rootNode);
-
+		//AppSaq::dumpExit($tree);
 		return $tree;
 	}
 
