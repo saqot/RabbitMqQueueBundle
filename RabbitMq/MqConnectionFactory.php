@@ -4,6 +4,7 @@ namespace Saq\RabbitMqQueueBundle\RabbitMq;
 
 
 use PhpAmqpLib\Connection\AMQPLazyConnection;
+use Saq\RabbitMqQueueBundle\Exception\MqException;
 
 /**
  * class:  MqConnectionFactory
@@ -62,6 +63,10 @@ class MqConnectionFactory
 				$this->parameters['keepalive'],
 				$this->parameters['heartbeat']
 			);
+		}
+
+		if (!$this->connection or !$this->connection->isConnected()) {
+			throw new MqException('Ошибка подключения к RabbitMq');
 		}
 
 		return $this->connection;
