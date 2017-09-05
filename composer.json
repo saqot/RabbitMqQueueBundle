@@ -11,8 +11,9 @@
         "email" : "saqott@gmail.com"
     }],
     "require" : {
-        "php": ">=7.0",
-        "symfony/symfony": ">=3.2"
+        "php":                      ">=7.0",
+        "symfony/symfony":          "~3.2",
+        "php-amqplib/php-amqplib":  "~2.6"
     },
     "autoload" : {
         "psr-4" : { "Saq\\RabbitMqQueueBundle\\" : "" }
