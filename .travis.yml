@@ -1,0 +1,37 @@
+# Project language
+language: php
+
+# Allows use container-based infrastructure
+sudo: false
+
+# Cache composer packages so "composer install" is faster
+cache:
+    directories:
+      - $HOME/.composer/cache
+
+# Matrix to test in every php version
+matrix:
+  # Fast finish allows to set the build as "finished" even if the "allow_failures" matrix elements are not finished yet.
+  fast_finish: true
+  include:
+      - php: 7.0
+        env: SYMFONY_VERSION="3.2.*" DB=mysql
+
+# Define an environment variable
+#env:
+#  - SYMFONY_VERSION="3.0.*"
+
+# Update composer
+before-install:
+  - composer self-update
+  - if [ "$SYMFONY_VERSION" != "" ]; then composer require --no-update symfony/symfony:${SYMFONY_VERSION}; fi
+  - cp app/config/parameters.yml.dist app/config/parameters.yml
+
+# Install composer dependencies,
+# Create database, schema and fixtures
+install:
+  - composer install
+
+# Run script
+script:
+  - php -v
