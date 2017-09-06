@@ -3,14 +3,13 @@
 namespace Saq\RabbitMqQueueBundle;
 
 use Saq\RabbitMqQueueBundle\DependencyInjection\RabbitMqQueueExtension;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
  * class:  RabbitMqQueueBundle
  * -----------------------------------------------------
- * @author  Saqot (Mihail Shirnin) <saqott@gmail.com>
+ * @author   Saqot (Mihail Shirnin) <saqott@gmail.com>
  * @package  Saq\RabbitMqQueueBundle
  * -----------------------------------------------------
  * 05.09.2017
@@ -39,8 +38,8 @@ class RabbitMqQueueBundle extends Bundle
 		if (null === $this->extension) {
 			$this->extension = new RabbitMqQueueExtension();
 		}
+
 		return $this->extension;
 	}
-
 
 }

@@ -52,7 +52,7 @@ class RabbitMqQueueExtension extends Extension
 
 
 		if (!empty($this->config['connection'])) {
-			$connDefintion = $container->getDefinition('saq.rabbitmq.connection.factory');
+			$connDefintion = $container->getDefinition('saq.rabbitmq.connection');
 			$connDefintion->addMethodCall('setParameters', [$this->config['connection']]);
 		}
 
