@@ -78,6 +78,16 @@ cd /tmp
 	```sh
 	service rabbitmq-server start
 	```
+* Ставим стандартные плагины
+	```sh
+	rabbitmq-plugins enable rabbitmq_management
+	chown -R rabbitmq:rabbitmq /var/lib/rabbitmq/
+	```
+	
+* Доступ к админ панели <http://ip-address:15672/>
+> По умолчанию создается сразу юзер **guest** одноименным паролем. У него админский досут по localhost. 
+> Рекомендую создать собственного пользователя, а **guest** удалить.
+
 На этом установка закончена	
 
 ### Управление
@@ -106,6 +116,8 @@ cd /tmp
 	rabbitmqctl add_user cinder CINDER_PASS
 	# Изменить пароль юзеру
 	rabbitmqctl change_password cinder NEW_PASS
+	# Сделать юзера админом
+	rabbitmqctl set_user_tags cinder administrator
 	# Выставить привелегии юзеру
 	rabbitmqctl set_permissions cinder ".*" ".*" ".*"
 	# Просмотреть список привелегий
