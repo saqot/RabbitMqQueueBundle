@@ -1,5 +1,5 @@
 [RabbitMqQueueBundle](https://saqot.github.io/RabbitMqQueueBundle/) >
-[Установка](index.md)
+[Установка](index-ru.md)
 
 
 # Установка бандла RabbitMqQueueBundle
