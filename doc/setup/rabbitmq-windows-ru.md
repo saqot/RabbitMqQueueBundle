@@ -1,0 +1,1 @@
+# Установка RabbitMq на windows.
