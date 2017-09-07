@@ -9,3 +9,4 @@ Saq RabbitMqQueueBundle
 
 * RU
 	- [Установка](https://saqot.github.io/RabbitMqQueueBundle/setup/index-ru.md)
+	- [Настройка](https://saqot.github.io/RabbitMqQueueBundle/config/index-ru.md)
