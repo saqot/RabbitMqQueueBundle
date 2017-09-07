@@ -93,29 +93,21 @@ cd /tmp
 	service rabbitmq-server status
 	```
 * Управление сервером:
-	```bash
+	```sh
 	# Старт
 	rabbitmqctl start
 	# Стоп:
 	rabbitmqctl stop
 	```
 	
-* Добавить юзера
-	```bash
+* Управление юзерами
+	```sh
+	# Добавить юзера
 	rabbitmqctl add_user cinder CINDER_PASS
-	```
-	
-* Изменить пароль юзеру
-	```bash
+	# Изменить пароль юзеру
 	rabbitmqctl change_password cinder NEW_PASS
-	```
-	
-* Выставить привелегии юзеру
-	```bash
+	# Выставить привелегии юзеру
 	rabbitmqctl set_permissions cinder ".*" ".*" ".*"
-	```
-	
-* Просмотреть список привелегий
-	```bash
+	# Просмотреть список привелегий
 	rabbitmqctl list_permissions
 	```
