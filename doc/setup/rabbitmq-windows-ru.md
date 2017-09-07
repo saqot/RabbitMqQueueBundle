@@ -40,7 +40,7 @@
 		> Запускаем консоль от Администратора
 	* Если выбрали консоль от windows то выполняем код 
 		```sh
-		cd	C:\Program Files\RabbitMQ Server\rabbitmq_server-3.6.11\sbin
+		cd C:\Program Files\RabbitMQ Server\rabbitmq_server-3.6.11\sbin
 		```
 	* запускаем установку сервера
 		```sh
@@ -49,7 +49,7 @@
 	* проверяем статус сервера, если ошибки, то гуглим и исправляем их
 		```sh
 		rabbitmq-service status
-		```sh
+		```
 	* устанавливаем менеджмент плагин
 		```sh	
 		rabbitmq-plugins enable rabbitmq_management
