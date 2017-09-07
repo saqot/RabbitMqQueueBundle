@@ -110,7 +110,7 @@ cd /tmp
 	rabbitmqctl stop
 	```
 	
-* Управление юзерами
+* ##### Управление юзерами
 	```sh
 	# Добавить юзера
 	rabbitmqctl add_user cinder CINDER_PASS
