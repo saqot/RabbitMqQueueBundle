@@ -6,12 +6,12 @@
 * заполняем app/config/parameters.yml.dist
 	```yaml
 	parameters:
-		# ...
+	# ...
 		rabbit_host: 'localhost'
 		rabbit_port: 5672
 		rabbit_user: 'guest'
 		rabbit_pwd:  'guest'
-		# ...
+	# ...
 	```
 
 * Запускаем обновление через composer, для формирования `app/config/parameters.yml`
