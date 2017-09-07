@@ -1,9 +1,5 @@
 [RabbitMqQueueBundle](https://saqot.github.io/RabbitMqQueueBundle/) >
-[Установка](https://saqot.github.io/RabbitMqQueueBundle/setup/)
-* ***Установка бандла RabbitMqQueueBundle*** <--
-* Установка [RabbitMq на windows](https://saqot.github.io/RabbitMqQueueBundle/setup/rabbitmq-windows-ru.html)
-* Установка [RabbitMq на centos 7](https://saqot.github.io/RabbitMqQueueBundle/setup/rabbitmq-centos7-ru.html) 
-
+[Установка](index.md)
 
 
 # Установка бандла RabbitMqQueueBundle
