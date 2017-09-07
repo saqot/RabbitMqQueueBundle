@@ -41,7 +41,13 @@
 	* путь `C:\Program Files\RabbitMQ Server\rabbitmq_server-3.3.5\base`
 * путь по Erlang
 	* имя `ERLANG_HOME`
-	* путь `C:\Program Files\erl9.0\bin`
+	* путь `C:\Program Files\erl9.0`
+* переменная PATH (Path)
+	- Если у вас ее нет, то создаем
+		* имя `PATH`
+		* путь `%PATH%`
+	- Если она уже есть, то открываем на редактирование и в поле пути в самом начале добавляем
+	`%PATH%;`
 	
 ### Запуск сервера
 Запускаем консольное прихожение windows.
