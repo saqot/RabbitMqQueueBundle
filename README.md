@@ -36,6 +36,6 @@ public function registerBundles()
 
 ### RabbitMq
 * RU
-	- Установка [RabbitMq на windows](docs/setup/rabbitmq-windows-ru.md)
-	- Установка [RabbitMq на centos 7](docs/setup/rabbitmq-centos7-ru.md) 
+	- Установка [RabbitMq на windows](https://saqot.github.io/RabbitMqQueueBundle/setup/rabbitmq-windows-ru.html)
+	- Установка [RabbitMq на centos 7](https://saqot.github.io/RabbitMqQueueBundle/setup/rabbitmq-centos7-ru.html) 
 
