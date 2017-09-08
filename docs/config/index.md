@@ -1,6 +1,6 @@
 [RabbitMqQueueBundle](https://saqot.github.io/RabbitMqQueueBundle/) > Настройка
 
-# Настройка бандла: RabbitMqQueueBundle
+## Настройка бандла: RabbitMqQueueBundle
 
 ###  Настраиваем parameters.yml
 * заполняем app/config/parameters.yml.dist

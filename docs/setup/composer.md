@@ -2,7 +2,7 @@
 [Установка](index.md)
 
 
-# Установка бандла RabbitMqQueueBundle
+## Установка бандла RabbitMqQueueBundle
 
 ### Composer
 Выполняем в консоли код

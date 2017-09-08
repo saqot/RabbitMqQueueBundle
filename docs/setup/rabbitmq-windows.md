@@ -1,7 +1,7 @@
 [RabbitMqQueueBundle](https://saqot.github.io/RabbitMqQueueBundle/) >
 [Установка](index.md)
 
-# Установка RabbitMq на windows.
+## Установка RabbitMq на windows.
 
 **ВАЖНО!**
 > Имя компьютера в системе должно быть на латинице и в нижнем регистре. Иначе Erlang работать не будет.

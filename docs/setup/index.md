@@ -1,6 +1,6 @@
 [RabbitMqQueueBundle](https://saqot.github.io/RabbitMqQueueBundle/) > Установка
 
-# Установка бандла: RabbitMqQueueBundle
+## Установка бандла: RabbitMqQueueBundle
 
 Порядок установки
 1. ставим бандл через Composer

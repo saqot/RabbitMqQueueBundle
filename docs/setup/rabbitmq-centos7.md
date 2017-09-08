@@ -1,7 +1,7 @@
 [RabbitMqQueueBundle](https://saqot.github.io/RabbitMqQueueBundle/) >
 [Установка](index.md)
 
-# Установка RabbitMq на centos 7.
+## Установка RabbitMq на centos 7.
 
 Для начала стоит обновить систему, выполняем код
 ```sh
