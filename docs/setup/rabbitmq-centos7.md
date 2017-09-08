@@ -1,5 +1,5 @@
 [RabbitMqQueueBundle](https://saqot.github.io/RabbitMqQueueBundle/) >
-[Установка](index-ru.md)
+[Установка](index.md)
 
 # Установка RabbitMq на centos 7.
 
