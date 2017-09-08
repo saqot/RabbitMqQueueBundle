@@ -8,7 +8,7 @@
 
 ## Инструкции
 
-* Установка бандла через [Composer](composer-ru.md)
+* Установка бандла через [Composer](composer.md)
 * Установка RabbitMq
-	* Установка [RabbitMq на windows](rabbitmq-windows-ru.md)
-	* Установка [RabbitMq на centos 7](rabbitmq-centos7-ru.md) 
+	* Установка [RabbitMq на windows](rabbitmq-windows.md)
+	* Установка [RabbitMq на centos 7](rabbitmq-centos7.md) 
