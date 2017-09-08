@@ -10,7 +10,3 @@ Saq RabbitMqQueueBundle
 * Инструкции
 	- [Установка](https://saqot.github.io/RabbitMqQueueBundle/setup/)
 	- [Настройка](https://saqot.github.io/RabbitMqQueueBundle/config/)
-	* [config1](/docs/config/index.md)
-	* [config2](docs/config/index.md)
-	* [config3](/config/index.md)
-	* [config4](config/index.md)
