@@ -6,3 +6,7 @@ services:
     saq.rabbitmq.channel:
         class: Saq\RabbitMqQueueBundle\RabbitMq\MqChannel
         arguments: ["@service_container"]
+
+    saq.rabbitmq.channel.check:
+        class: Saq\RabbitMqQueueBundle\Service\MqJobsChannelCheckService
+        arguments: ["@service_container"]
