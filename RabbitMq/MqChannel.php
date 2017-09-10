@@ -110,8 +110,18 @@ class MqChannel implements MqChannelInterface
 	 */
 	protected function getChannel()
 	{
-
 		return $this->channel;
+	}
+
+	/**
+	 * Удаление канала со всеми заданиями в нем
+	 * @return bool
+	 */
+	public function delete()
+	{
+		$this->channel->queue_delete($this->queue);
+
+		return true;
 	}
 
 	/**
@@ -151,7 +161,7 @@ class MqChannel implements MqChannelInterface
 		);
 
 		while (count($this->channel->callbacks)) {
-			echo "\n wait . . . \n";
+			echo "\n wait . . .";
 			$this->channel->wait();
 		}
 	}
