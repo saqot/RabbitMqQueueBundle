@@ -1,4 +1,4 @@
-[RabbitMqQueueBundle](https://saqot.github.io/RabbitMqQueueBundle/) > Настройка
+[Инструкции](https://saqot.github.io/RabbitMqQueueBundle/) > Настройка
 
 ## Настройка бандла: RabbitMqQueueBundle
 
