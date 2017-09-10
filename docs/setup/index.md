@@ -1,4 +1,4 @@
-[RabbitMqQueueBundle](https://saqot.github.io/RabbitMqQueueBundle/) > Установка
+[Инструкции](https://saqot.github.io/RabbitMqQueueBundle/) > Установка
 
 ## Установка бандла: RabbitMqQueueBundle
 
