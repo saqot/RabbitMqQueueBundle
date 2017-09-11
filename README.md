@@ -8,6 +8,8 @@ Saq RabbitMqQueueBundle
 -------------------
 Максималньно упрощает задачу по управлению очередями, используется бибилиотека [RabbitMq](http://www.rabbitmq.com/) и бандл [php-amqplib](https://github.com/php-amqplib/php-amqplib)
 
-* Инструкции
-	- [Установка](https://saqot.github.io/RabbitMqQueueBundle/setup/)
-	- [Настройка](https://saqot.github.io/RabbitMqQueueBundle/config/)
+```bash
+$ php composer require saq/rabbitmq-queue-bundle
+```
+
+Полное описание установки и настройки находится [здесь](https://saqot.com/working/rabbitmq-queue-bundle/)
