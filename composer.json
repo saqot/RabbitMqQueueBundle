@@ -1,7 +1,7 @@
 {
     "name": "saq/rabbitmq-queue-bundle",
     "description": "queue manager for Symfony 3",
-    "version" : "1.0.8",
+    "version" : "1.0.9",
     "type" : "symfony-bundle",
     "homepage": "https://github.com/saqot/RabbitMqQueueBundle",
     "license": "MIT",
