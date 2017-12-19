@@ -84,6 +84,7 @@ class MqChannel implements MqChannelInterface
 		$this->container = $container;
 		$this->connection = $this->container->get('saq.rabbitmq.connection')->getConnection();
 		$this->channel = $this->connection->channel();
+		$this->channel->basic_qos(0, 1, false);
 		$this->channel->queue_declare($this->queue, $this->passive, $this->durable, $this->exclusive, $this->auto_delete);
 
 	}
