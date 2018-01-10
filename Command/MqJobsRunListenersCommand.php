@@ -3,7 +3,6 @@
 namespace Saq\RabbitMqQueueBundle\Command;
 
 use Saq\RabbitMqQueueBundle\Exception\MqException;
-use Saq\RabbitMqQueueBundle\Service\MqConsole;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Command\LockableTrait;
 use Symfony\Component\Console\Input\InputInterface;
@@ -15,7 +14,7 @@ use Symfony\Component\Filesystem\LockHandler;
 /**
  * class:  MqJobsRunListenersCommand
  * -----------------------------------------------------
- * @author  Saqot (Mihail Shirnin) <saqott@gmail.com>
+ * @author   Saqot (Mihail Shirnin) <saqott@gmail.com>
  * @package  Saq\RabbitMqQueueBundle\Command
  * -----------------------------------------------------
  * 09.01.2018
@@ -68,13 +67,20 @@ class MqJobsRunListenersCommand extends ContainerAwareCommand
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{
 		$io = new SymfonyStyle($input, $output);
-		$service = $input->getOption('service');
-		$limit = $input->getOption('limit');
 
-		if ($service) {
+		$mqConn = $this->getContainer()->get('saq.rabbitmq.connection');
+		$cns = $mqConn->getRegistredChannels();
+
+		foreach ($cns as $cn) {
+			$service = $cn['service'];
+			$limit = $cn['max_running'];
+
+			if (!$oService = $this->getContainer()->has($service)) {
+				throw new MqException("класс канала не найден : {$service}");
+			}
+
 			// логика по лимитам
 			$locked = false;
-
 			for ($i = 1; $i <= $limit; $i++) {
 				$lock = new LockHandler("{$this->commandName} {$service} $i");
 				if ($locked = $lock->lock()) {
@@ -83,47 +89,16 @@ class MqJobsRunListenersCommand extends ContainerAwareCommand
 			}
 
 			if (!$locked) {
-				echo 'limit';
-				return false;
-			} else {
-				if (!$oService = $this->getContainer()->has($service)) {
-					throw new MqException("класс канала не найден : {$service}" );
-				}
-				$this->getContainer()->get($service)->listen();
-				return true;
-			}
-
-		} else {
-			// если $service не указан, запускаем регистрацию всех каналов
-			$this->runRegistredChannels($io);
-		}
-
-		return false;
-	}
-
-
-	protected function runRegistredChannels(SymfonyStyle $io)
-	{
-		$mqConn = $this->getContainer()->get('saq.rabbitmq.connection');
-
-		$cns = $mqConn->getRegistredChannels();
-		foreach ($cns as $cn) {
-			$console = new MqConsole();
-			$console->run("php bin/console {$this->commandName} --service=\"{$cn['service']}\" --limit={$cn['max_running']}");
-
-			// проверка на ошибки при выполнении смой консольной команды
-			if ($err = $console->getError()) {
-				throw new MqException($err);
-			}
-
-			// проверка на limit . Отдается методом execute выше
-			if ($console->getResult() == 'limit') {
 				$io->error('Достигнут лимит запущенных слушателей service: ' . $cn['service']);
 				continue;
+			} else {
+				$this->getContainer()->get($service)->listen();
+				break;
 			}
+
 		}
 
-		return true;
 	}
+
 }
 
