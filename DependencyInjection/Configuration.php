@@ -2,9 +2,6 @@
 
 namespace Saq\RabbitMqQueueBundle\DependencyInjection;
 
-use AppBundle\Helper\App;
-use Saq\StaticHelperBundle\Helper\AppSaq;
-use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -49,8 +46,15 @@ class Configuration implements ConfigurationInterface
 						->scalarNode('password')->defaultValue('guest')->end()
 					->end()
 				->end()
-				->scalarNode('url')->defaultValue('urlurlurlurlurl')->end()
-				->scalarNode('url2')->end()
+				->arrayNode('channel')
+					->prototype('array')
+						->children()
+							->scalarNode('service')->isRequired()->end()
+							->scalarNode('max_running')->isRequired()->end()
+						->end()
+					->end()
+				->end()
+				->scalarNode('url')->end()
 
 			->end()
 		;
