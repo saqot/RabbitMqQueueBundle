@@ -118,8 +118,8 @@ class MqJobsRunListenersCommand extends ContainerAwareCommand
 
 			// проверка на limit . Отдается методом execute выше
 			if ($console->getResult() == 'limit') {
-				$io->error('Достигнут лимит запущенных слушателей');
-				break;
+				$io->error('Достигнут лимит запущенных слушателей service: ' . $cn['service']);
+				continue;
 			}
 		}
 
