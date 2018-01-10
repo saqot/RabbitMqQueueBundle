@@ -27,10 +27,6 @@ class RabbitMqQueueExtension extends Extension
 	 */
 	private $container;
 
-	/**
-	 * @var array
-	 */
-	private $config = [];
 
 	public function getAlias()
 	{
@@ -48,16 +44,26 @@ class RabbitMqQueueExtension extends Extension
 		$loader->load('services.yml');
 
 		$configuration = new Configuration($this->name);
-		$this->config = $this->processConfiguration($configuration, $configs);
+		$config = $this->processConfiguration($configuration, $configs);
 
-
-		if (!empty($this->config['connection'])) {
+		if (!empty($config['connection'])) {
 			$connDefintion = $container->getDefinition('saq.rabbitmq.connection');
-			$connDefintion->addMethodCall('setParameters', [$this->config['connection']]);
+			$connDefintion->addMethodCall('setParameters', [$config['connection']]);
+		}
+
+		if (!empty($config['channel'])) {
+			$channels = [];
+			// убираем дубли сервисов в списке каналов
+			foreach ($config['channel'] as $i => $ch) {
+				if (empty($channels[ $ch['service'] ])) {
+					$channels[ $ch['service'] ] = $ch;
+				}
+			}
+			$connDefintion = $container->getDefinition('saq.rabbitmq.connection');
+			$connDefintion->addMethodCall('setChannels', [$channels]);
 		}
 
 	}
 
 
 }
-
