@@ -32,18 +32,46 @@ class MqConnection
 		'context'            => null,
 		'keepalive'          => false,
 		'heartbeat'          => 0,
+		'channels'          => [],
 	];
+	/** @var array */
+	private $channels = [];
+
 	/** @var AMQPLazyConnection */
 	private $connection;
 
 	/**
 	 * Получаем праметры из конфигуратора
 	 * @param array $parameters
+	 * @return $this
 	 */
 	public function setParameters(array $parameters)
 	{
 		$this->parameters = array_merge($this->parameters, $parameters);
+
+		return $this;
 	}
+
+	/**
+	 *
+	 * @param array $channels
+	 * @return $this
+	 */
+	public function setChannels(array $channels = [])
+	{
+		$this->channels = $channels;
+
+		return $this;
+	}
+
+	/**
+	 * @return array
+	 */
+	public function getRegistredChannels(): array
+	{
+		return $this->channels;
+	}
+
 
 	public function getConnection()
 	{
