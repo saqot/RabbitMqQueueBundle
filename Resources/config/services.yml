@@ -2,11 +2,26 @@ services:
     saq.rabbitmq.connection:
         class: Saq\RabbitMqQueueBundle\RabbitMq\MqConnection
         arguments: []
+        public: true
 
     saq.rabbitmq.channel:
         class: Saq\RabbitMqQueueBundle\RabbitMq\MqChannel
         arguments: ["@service_container"]
+        public: true
 
     saq.rabbitmq.channel.check:
         class: Saq\RabbitMqQueueBundle\Service\MqJobsChannelCheckService
         arguments: ["@service_container"]
+        public: true
+
+# console.command
+    mq.jobs:check:
+        class: Saq\RabbitMqQueueBundle\Command\MqJobsCheckCommand
+        tags:
+            - { name: console.command }
+
+    mq.jobs:run.listeners:
+        class: Saq\RabbitMqQueueBundle\Command\MqJobsRunListenersCommand
+        tags:
+            - { name: console.command }
+            #- { name: kernel.event_listener, event: console.terminate, method: onStopping }
