@@ -5,14 +5,14 @@
     "type" : "symfony-bundle",
     "homepage": "https://github.com/saqot/RabbitMqQueueBundle",
     "license": "MIT",
-    "keywords" : ["symfony", "symfony4", "symfony bundle", "rabbitmq", "queue"],
+    "keywords" : ["symfony3", "symfony4", "symfony bundle", "rabbitmq", "queue"],
     "authors" : [{
         "name" : "Mihail Shirnin / Saqot",
         "email" : "saqott@gmail.com"
     }],
     "require" : {
         "php":                      ">=7.1",
-        "symfony/symfony":          "^4.0",
+        "symfony/symfony":          "~4.0",
         "php-amqplib/php-amqplib":  "~2.7"
     },
     "autoload": {
