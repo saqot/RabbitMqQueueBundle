@@ -14,12 +14,12 @@ matrix:
   # Fast finish allows to set the build as "finished" even if the "allow_failures" matrix elements are not finished yet.
   fast_finish: true
   include:
-      - php: 7.0
-        env: SYMFONY_VERSION="3.2.*" DB=mysql
+      - php: 7.1
+        env: SYMFONY_VERSION="4.0.*" DB=mysql
 
 # Define an environment variable
 #env:
-#  - SYMFONY_VERSION="3.0.*"
+#  - SYMFONY_VERSION="4.0.*"
 
 # Update composer
 before-install:
