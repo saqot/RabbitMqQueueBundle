@@ -19,6 +19,9 @@ class RabbitMqQueueBundle extends Bundle
 	private static $oContainer;
 
 
+	/**
+	 * @param ContainerInterface|null $container
+	 */
 	public function setContainer(ContainerInterface $container = null)
 	{
 		parent::setContainer($container);
