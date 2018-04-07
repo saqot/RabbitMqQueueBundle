@@ -9,7 +9,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Filesystem\LockHandler;
+use Saq\RabbitMqQueueBundle\Handler\MqLockHandler;
 
 /**
  * class:  MqJobsRunListenersCommand
@@ -64,6 +64,12 @@ class MqJobsRunListenersCommand extends ContainerAwareCommand
 
 	}
 
+	/**
+	 * @param InputInterface  $input
+	 * @param OutputInterface $output
+	 * @return int|null|void
+	 * @throws MqException
+	 */
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{
 		$io = new SymfonyStyle($input, $output);
@@ -82,7 +88,7 @@ class MqJobsRunListenersCommand extends ContainerAwareCommand
 			// логика по лимитам
 			$locked = false;
 			for ($i = 1; $i <= $limit; $i++) {
-				$lock = new LockHandler("{$this->commandName} {$service} $i");
+				$lock = new MqLockHandler("{$this->commandName} {$service} $i");
 				if ($locked = $lock->lock()) {
 					break;
 				}

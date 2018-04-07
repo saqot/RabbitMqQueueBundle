@@ -9,7 +9,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Filesystem\LockHandler;
+use Saq\RabbitMqQueueBundle\Handler\MqLockHandler;
 
 /**
  * Используем для наследования под консольные комманды
@@ -89,7 +89,7 @@ class MqJobsListener extends ContainerAwareCommand
 		$locked = false;
 
 		for ($i = 1; $i <= $this->countProcesses; $i++) {
-			$lock = new LockHandler($this->commandName . $i);
+			$lock = new MqLockHandler($this->commandName . $i);
 			if ($locked = $lock->lock()) {
 				break;
 			}
