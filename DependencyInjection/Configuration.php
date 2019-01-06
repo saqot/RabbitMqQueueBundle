@@ -34,7 +34,7 @@ class Configuration implements ConfigurationInterface
 
 	public function getConfigTreeBuilder()
 	{
-		$builder = new TreeBuilder();
+		$builder = new TreeBuilder($this->name);
 		$root = $builder->root($this->name);
 		$root
 			->children()
