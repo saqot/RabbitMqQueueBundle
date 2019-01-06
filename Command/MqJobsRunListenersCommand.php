@@ -3,13 +3,14 @@
 namespace Saq\RabbitMqQueueBundle\Command;
 
 use Saq\RabbitMqQueueBundle\Exception\MqException;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Command\LockableTrait;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Saq\RabbitMqQueueBundle\Handler\MqLockHandler;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * class:  MqJobsRunListenersCommand
@@ -19,7 +20,7 @@ use Saq\RabbitMqQueueBundle\Handler\MqLockHandler;
  * -----------------------------------------------------
  * 09.01.2018
  */
-class MqJobsRunListenersCommand extends ContainerAwareCommand
+class MqJobsRunListenersCommand extends Command
 {
 	use LockableTrait;
 
@@ -40,11 +41,18 @@ class MqJobsRunListenersCommand extends ContainerAwareCommand
 	 */
 	protected $countProcesses = 3;
 
-	/**
-	 * MqJobsRunListenersCommand constructor.
-	 */
-	public function __construct()
+    /**
+     * @var ContainerInterface|null
+     */
+    private $container;
+
+    /**
+     * MqJobsRunListenersCommand constructor.
+     * @param ContainerInterface $container
+     */
+	public function __construct(ContainerInterface $container)
 	{
+        $this->container = $container;
 		parent::__construct();
 	}
 
@@ -74,14 +82,14 @@ class MqJobsRunListenersCommand extends ContainerAwareCommand
 	{
 		$io = new SymfonyStyle($input, $output);
 
-		$mqConn = $this->getContainer()->get('saq.rabbitmq.connection');
+		$mqConn = $this->container->get('saq.rabbitmq.connection');
 		$cns = $mqConn->getRegistredChannels();
 
 		foreach ($cns as $cn) {
 			$service = $cn['service'];
 			$limit = $cn['max_running'];
 
-			if (!$oService = $this->getContainer()->has($service)) {
+			if (!$oService = $this->container->has($service)) {
 				throw new MqException("класс канала не найден : {$service}");
 			}
 
@@ -98,7 +106,7 @@ class MqJobsRunListenersCommand extends ContainerAwareCommand
 				$io->error('Достигнут лимит запущенных слушателей service: ' . $cn['service']);
 				continue;
 			} else {
-				$this->getContainer()->get($service)->listen();
+                $this->container->get($service)->listen();
 				break;
 			}
 

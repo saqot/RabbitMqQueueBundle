@@ -2,7 +2,7 @@
 
 namespace Saq\RabbitMqQueueBundle\Command;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Command\LockableTrait;
 use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputInterface;
@@ -10,6 +10,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Saq\RabbitMqQueueBundle\Handler\MqLockHandler;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Используем для наследования под консольные комманды
@@ -21,7 +22,7 @@ use Saq\RabbitMqQueueBundle\Handler\MqLockHandler;
  * -----------------------------------------------------
  * 05.09.2017
  */
-class MqJobsListener extends ContainerAwareCommand
+class MqJobsListener extends Command
 {
 	use LockableTrait;
 
@@ -55,13 +56,28 @@ class MqJobsListener extends ContainerAwareCommand
 	/** @var SymfonyStyle $io */
 	protected $io;
 
-	/**
-	 * MqJobsListener constructor.
-	 */
-	public function __construct()
+    /**
+     * @var ContainerInterface|null
+     */
+    private $container;
+
+    /**
+     * MqJobsListener constructor.
+     * @param ContainerInterface $container
+     */
+	public function __construct(ContainerInterface $container)
 	{
+        $this->container = $container;
 		parent::__construct();
 	}
+
+    /**
+     * @return ContainerInterface|null
+     */
+    public function getContainer(): ?ContainerInterface
+    {
+        return $this->container;
+    }
 
 
 	protected function configure()

@@ -17,11 +17,13 @@ services:
 # console.command
     mq.jobs:check:
         class: Saq\RabbitMqQueueBundle\Command\MqJobsCheckCommand
+        arguments: ["@service_container"]
         tags:
             - { name: console.command }
 
     mq.jobs:run.listeners:
         class: Saq\RabbitMqQueueBundle\Command\MqJobsRunListenersCommand
+        arguments: ["@service_container"]
         tags:
             - { name: console.command }
             #- { name: kernel.event_listener, event: console.terminate, method: onStopping }

@@ -73,7 +73,11 @@ class MqConnection
 	}
 
 
-	public function getConnection()
+    /**
+     * @return AMQPLazyConnection|AMQPStreamConnection
+     * @throws MqException
+     */
+    public function getConnection()
 	{
 		if (!$this->connection) {
 			$this->connection = new AMQPStreamConnection(

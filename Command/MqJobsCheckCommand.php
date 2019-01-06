@@ -2,6 +2,9 @@
 
 namespace Saq\RabbitMqQueueBundle\Command;
 
+use Saq\RabbitMqQueueBundle\Exception\MqException;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
 /**
  * class:  MqJobsCheckCommand
  * -----------------------------------------------------
@@ -28,17 +31,33 @@ class MqJobsCheckCommand extends MqJobsListener
 	 */
 	protected $countProcesses = 1;
 
+    /**
+     * MqJobsListener constructor.
+     * @param ContainerInterface $container
+     */
+    public function __construct(ContainerInterface $container)
+    {
+        parent::__construct($container);
+    }
+
 	protected function runCommand()
 	{
 		$this->io->title('Запускаем проверку работоспособности бандла');
 		$mqConn = $this->getContainer()->get('saq.rabbitmq.connection');
 
-		if (!$mqConn->getConnection()->isConnected()) {
-			$this->io->error('Ошибка подключения к RabbitMq. Проверьте наличие запушенной службы');
+        try {
+            if (!$mqConn->getConnection()->isConnected()) {
+                $this->io->error('Ошибка подключения к RabbitMq. Проверьте наличие запушенной службы');
 
-			return false;
-		}
-		echo "\n [OK] RabbitMq запущен";
+                return false;
+            }
+        } catch (MqException $e) {
+            $this->io->error('Ошибка подключения к RabbitMq. Проверьте наличие запушенной службы');
+
+            return false;
+        }
+
+        echo "\n [OK] RabbitMq запущен";
 
 		$channelCheck = $this->getContainer()->get('saq.rabbitmq.channel.check');
 		$channelCheck
