@@ -4,7 +4,7 @@ Saq RabbitMqQueueBundle
 [![Latest Stable Version](https://poser.pugx.org/saq/rabbitmq-queue-bundle/v/stable)](https://packagist.org/packages/saq/rabbitmq-queue-bundle)
 [![Total Downloads](https://poser.pugx.org/saq/rabbitmq-queue-bundle/downloads)](https://packagist.org/packages/saq/rabbitmq-queue-bundle)
 
-Бундл управления очередями c помощью RabbitMq для Symfony > 3.0|4.0
+Бундл управления очередями c помощью RabbitMq для Symfony > 4.0|5.0
 -------------------
 Максималньно упрощает задачу по управлению очередями, используется бибилиотека [RabbitMq](http://www.rabbitmq.com/) и бандл [php-amqplib](https://github.com/php-amqplib/php-amqplib)
 
