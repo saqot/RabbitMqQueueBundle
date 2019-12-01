@@ -11,10 +11,9 @@
         "email" : "saqott@gmail.com"
     }],
     "require" : {
-        "php":                      ">=7.2",
-        "symfony/framework-bundle": "^4.2",
-        "php-amqplib/php-amqplib":  "~2.7",
-        "symfony/lock": "^4.4"
+        "php": "^7.2",
+        "symfony/config": "^4.4|^5.0",
+        "php-amqplib/php-amqplib":  "~2.7"
     },
     "autoload": {
         "psr-4": {
@@ -24,7 +23,7 @@
     "minimum-stability": "dev",
     "extra" : {
         "branch-alias" : {
-            "dev-master" : "2.2.x-dev"
+            "dev-master" : "2.2.1"
         }
     }
 }
