@@ -20,7 +20,7 @@
             "Saq\\RabbitMqQueueBundle\\": ""
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "extra" : {
         "branch-alias" : {
             "dev-master" : "2.2.1"
