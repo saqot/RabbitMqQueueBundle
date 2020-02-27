@@ -111,7 +111,7 @@ class MqJobsRunListenersCommand extends Command
 			}
 
 		}
-
+        return 0;
 	}
 
 }

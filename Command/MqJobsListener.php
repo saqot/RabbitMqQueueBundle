@@ -113,14 +113,11 @@ class MqJobsListener extends Command
 
 		if (!$locked) {
 			$this->io->error('Достигнут лимит запущенных слушателей');
-
-			return false;
 		} else {
 			$this->runCommand();
-
-			return true;
 		}
 
+        return 0;
 	}
 
 	protected function runCommand()
